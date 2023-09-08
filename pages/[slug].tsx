@@ -7,9 +7,9 @@ export const runtime = 'experimental-edge';
 
 
 
-export default function Post({data,host,slug,ip}: any) {
+export default function Post({data,host,slug}: any) {
 
-    console.log(ip);
+   
   return (
     
    
@@ -17,21 +17,21 @@ export default function Post({data,host,slug,ip}: any) {
           <>
              
              <Head>
-             <title></title>
-          <meta name="description" content={data.description} />
-          <meta property="og:type" content="article" />
-          <meta property="og:locale" content="en_US" />
-          <meta property="og:title" content={data.title}/>
-          <meta property="og:description" content={data.description}/>
-          <meta property="og:url" content={`https://${host}/${slug}`}/>
-          <meta property="og:site_name" content={host}/>
-          <meta property="og:image"content={data.image}/>
-          <meta property="og:image:secure_url" content={data.image} />
-          <meta property="og:image:width" content="750" />
-          <meta property="og:image:height" content="390" />
-          <meta property="og:image:alt" content={data.title} />
-          <meta property="og:image:type" content="image/jpeg" />
-          <meta property="article:published_time" content={data.date}/>
+            <title>{data.title}</title>
+            <meta name="description" content={data.description} />
+            <meta property="og:type" content="article" />
+            <meta property="og:locale" content="en_US" />
+            <meta property="og:title" content={data.title}/>
+            <meta property="og:description" content={data.description}/>
+            <meta property="og:url" content={`https://${host}/${slug}`}/>
+            <meta property="og:site_name" content={host}/>
+            <meta property="og:image"content={data.image}/>
+            <meta property="og:image:secure_url" content={data.image} />
+            <meta property="og:image:width" content="750" />
+            <meta property="og:image:height" content="390" />
+            <meta property="og:image:alt" content={data.title} />
+            <meta property="og:image:type" content="image/jpeg" />
+            <meta property="article:published_time" content={data.date}/>
     </Head>
 
 
@@ -90,8 +90,8 @@ export const getServerSideProps: GetServerSideProps = async ({req,params}) => {
         props: {
         data:data,
         host,
-        slug,
-        ip
+        slug
+        
         }
     }
 }
