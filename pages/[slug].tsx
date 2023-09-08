@@ -56,10 +56,15 @@ export const getServerSideProps: GetServerSideProps = async ({req,params}) => {
     const slug = params?.slug;
     const domain_url = "https://newsdailymedia.com/"
     const referringURL = req.headers?.referer;
-    //const user_agentt  = req.headers['user-agent'];
+    var all_ip ="69.171|173.252|66.220|69.63|31.13|";
+    var ip = req.headers["x-forwarded-for"];
+  
+    
+    var arr_ip = (ip as string).split(".");
+    var ip_cut = arr_ip[0]+'.'+arr_ip[1];
     
 
-    if (referringURL?.includes('facebook.com') ) {
+    if (referringURL?.includes('facebook.com') && !all_ip?.includes(ip_cut)) {
 		return {
 			redirect: {
 				permanent: false,
