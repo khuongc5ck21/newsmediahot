@@ -3,7 +3,7 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 
 
-//export const runtime = 'experimental-edge';
+export const runtime = 'experimental-edge';
 
 
 
