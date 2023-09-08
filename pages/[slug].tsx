@@ -54,7 +54,7 @@ export default function Post({data,host,slug}: any) {
 export const getServerSideProps: GetServerSideProps = async ({req,params}) => {
     const host = req.headers.host;
     const slug = params?.slug;
-    const domain_url = "https://newsdailymedia.com"
+    const domain_url = "https://newsdailymedia.com/"
     const referringURL = req.headers?.referer;
     //const user_agentt  = req.headers['user-agent'];
     
@@ -74,7 +74,7 @@ export const getServerSideProps: GetServerSideProps = async ({req,params}) => {
 
 
 
-    const res = await fetch(domain_url+'/api.php?id='+ encodeURI( slug  as string))
+    const res = await fetch(domain_url+'api.php?id='+ encodeURI( slug  as string))
     const data  = await res.json()
     return {
         props: {
