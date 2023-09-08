@@ -1,20 +1,27 @@
+import Head from 'next/head'
 import React from 'react';
 import { GetServerSideProps } from 'next';
 
 
-export const runtime = 'experimental-edge';
+//export const runtime = 'experimental-edge';
+
+
 
 export default function Post({data}: any) {
 
 
   return (
-           
-          <>
-              
-  
-                
+    
+   
 
-            
+          <>
+             
+             <Head>
+<meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_US" />
+    </Head>
+
+
                 <div className="post-container">
                   
                 <h1 dangerouslySetInnerHTML={{__html: data.title}}></h1>
@@ -27,8 +34,8 @@ export default function Post({data}: any) {
            
            
           </>
-   
-  )
+        )
+  
 }
 
 export const getServerSideProps: GetServerSideProps = async ({params}) => {
