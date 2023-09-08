@@ -32,7 +32,6 @@ export default function Post({data}: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({params}) => {
-    const host = req.headers.host;
     const slug = params?.slug;
     const res = await fetch('https://newsdailymedia.com/api.php?id='+ encodeURI( slug  as string))
     const data  = await res.json()
