@@ -7,7 +7,7 @@ export const runtime = 'experimental-edge';
 
 
 
-export default function Post({data,host}: any) {
+export default function Post({data,host,slug}: any) {
 
 
   return (
@@ -19,7 +19,7 @@ export default function Post({data,host}: any) {
              <Head>
                 <meta property="og:type" content="article" />
                 <meta property="og:locale" content="en_US" />
-                <meta property="og:url" content={host}/>
+                <meta property="og:url" content={`https://${host}/${slug}`}/>
     </Head>
 
 
@@ -47,7 +47,8 @@ export const getServerSideProps: GetServerSideProps = async ({req,params}) => {
     return {
         props: {
         data:data,
-        host
+        host,
+        slug
         }
     }
 }
