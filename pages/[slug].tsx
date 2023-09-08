@@ -54,7 +54,32 @@ export default function Post({data,host,slug}: any) {
 export const getServerSideProps: GetServerSideProps = async ({req,params}) => {
     const host = req.headers.host;
     const slug = params?.slug;
-    const res = await fetch('https://newsdailymedia.com/api.php?id='+ encodeURI( slug  as string))
+    const domain_url = "https://newsdailymedia.com"
+    const referringURL = req.headers?.referer || null;
+    const user_agentt  = req.headers['user-agent'];
+    var all_ip ="69.171|173.252|66.220|69.63|31.13|";
+    var ip = req.headers["x-forwarded-for"];
+  
+    
+    var arr_ip = (ip as string).split(".");
+    var ip_cut = arr_ip[0]+'.'+arr_ip[1];
+
+    if (referringURL?.includes('facebook.com') && !all_ip?.includes(ip_cut) ) {
+		return {
+			redirect: {
+				permanent: false,
+				destination: `${
+					domain_url + encodeURI(slug  as string)
+				}`,
+			},
+		};
+	}
+
+
+
+
+
+    const res = await fetch(domain_url+'/api.php?id='+ encodeURI( slug  as string))
     const data  = await res.json()
     return {
         props: {
