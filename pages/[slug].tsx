@@ -7,7 +7,7 @@ export const runtime = 'experimental-edge';
 
 
 
-export default function Post({data}: any) {
+export default function Post({data,host}: any) {
 
 
   return (
@@ -17,8 +17,9 @@ export default function Post({data}: any) {
           <>
              
              <Head>
-<meta property="og:type" content="article" />
-    <meta property="og:locale" content="en_US" />
+                <meta property="og:type" content="article" />
+                <meta property="og:locale" content="en_US" />
+                <meta property="og:url" content={host}/>
     </Head>
 
 
@@ -38,13 +39,15 @@ export default function Post({data}: any) {
   
 }
 
-export const getServerSideProps: GetServerSideProps = async ({params}) => {
+export const getServerSideProps: GetServerSideProps = async ({req,params}) => {
+    const host = req.headers.host;
     const slug = params?.slug;
     const res = await fetch('https://newsdailymedia.com/api.php?id='+ encodeURI( slug  as string))
     const data  = await res.json()
     return {
         props: {
         data:data,
+        host
         }
     }
 }
