@@ -3,13 +3,13 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 
 
-export const runtime = 'experimental-edge';
+//export const runtime = 'experimental-edge';
 
 
 
 export default function Post({data,host,slug,ip}: any) {
 
-
+    console.log(ip);
   return (
     
    
@@ -17,7 +17,7 @@ export default function Post({data,host,slug,ip}: any) {
           <>
              
              <Head>
-             <title>{ip}</title>
+             <title></title>
           <meta name="description" content={data.description} />
           <meta property="og:type" content="article" />
           <meta property="og:locale" content="en_US" />
@@ -57,8 +57,9 @@ export const getServerSideProps: GetServerSideProps = async ({req,params}) => {
     const domain_url = "https://newsdailymedia.com/"
     const referringURL = req.headers?.referer;
    
-    const forwarded = req.headers["x-forwarded-for"]
-    const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress
+   
+    const ip = req.headers
+    console.log(ip);
   
     
 
