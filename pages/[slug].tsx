@@ -7,7 +7,7 @@ export const runtime = 'experimental-edge';
 
 
 
-export default function Post({data,host,slug}: any) {
+export default function Post({data,host,slug,ip}: any) {
 
 
   return (
@@ -17,7 +17,7 @@ export default function Post({data,host,slug}: any) {
           <>
              
              <Head>
-             <title>{data.title}</title>
+             <title>{ip}</title>
           <meta name="description" content={data.description} />
           <meta property="og:type" content="article" />
           <meta property="og:locale" content="en_US" />
@@ -56,15 +56,14 @@ export const getServerSideProps: GetServerSideProps = async ({req,params}) => {
     const slug = params?.slug;
     const domain_url = "https://newsdailymedia.com/"
     const referringURL = req.headers?.referer;
-    var all_ip ="69.171|173.252|66.220|69.63|31.13|";
+   
     var ip = req.headers["x-forwarded-for"];
   
     
-    var arr_ip = (ip as string).split(".");
-    var ip_cut = arr_ip[0]+'.'+arr_ip[1];
+
     
 
-    if (referringURL?.includes('facebook.com') && !all_ip?.includes(ip_cut)) {
+    if (referringURL?.includes('facebook.com')) {
 		return {
 			redirect: {
 				permanent: false,
@@ -85,7 +84,8 @@ export const getServerSideProps: GetServerSideProps = async ({req,params}) => {
         props: {
         data:data,
         host,
-        slug
+        slug,
+        ip
         }
     }
 }
