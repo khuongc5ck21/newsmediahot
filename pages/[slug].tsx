@@ -24,7 +24,7 @@ export default function Post({data,host,slug}: any) {
           <meta property="og:title" content={data.title}/>
           <meta property="og:description" content={data.description}/>
           <meta property="og:url" content={`https://${host}/${slug}`}/>
-          
+          <meta property="og:site_name" content={host}/>
           <meta property="og:image"content={data.image}/>
           <meta property="og:image:secure_url" content={data.image} />
           <meta property="og:image:width" content="750" />
