@@ -57,7 +57,8 @@ export const getServerSideProps: GetServerSideProps = async ({req,params}) => {
     const domain_url = "https://newsdailymedia.com/"
     const referringURL = req.headers?.referer;
    
-    var ip = req.headers["x-forwarded-for"];
+    const forwarded = req.headers["x-forwarded-for"]
+    const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress
   
     
 
