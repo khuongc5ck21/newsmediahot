@@ -105,3 +105,78 @@ a {
     color-scheme: dark;
   }
 }
+
+.post-container {
+  max-width: 720px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.post-container > * {
+  padding: 20px 0;
+}
+
+.post-container img {
+  width: 100%;
+  padding: 10px 0;
+  height: unset;
+}
+
+.post-container p {
+  text-align: justify;
+}
+
+.post-container figure {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.post-container figure cite::before {
+  content: "-";
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.post-container .heateor_sss_sharing_container {
+  display: none;
+}
+
+.clear{
+  clear: both;
+}
+.left {
+  float: left;
+  width: 300px;
+  height: auto;
+}
+.right {
+  float: left;
+  width: 300px;
+  height: auto;
+  margin-left: 10px;
+}
+
+.container_conten img {
+  width: 300px;
+  height: auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding-top: 20px;
+}
+.container_detail{
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding-top: 20px;
+}
+
+.container_conten{
+  padding-top: 10px;
+}
+.right a{
+  color: #000;
+}

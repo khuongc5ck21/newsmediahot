@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React from 'react';
 import { GetServerSideProps } from 'next';
 
-
+export const runtime = 'edge';
 
 function blog({data}:any) {
 
