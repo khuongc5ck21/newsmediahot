@@ -55,7 +55,7 @@ export const getServerSideProps: GetServerSideProps = async ({req,params}) => {
     const host = req.headers.host;
     const slug = params?.slug;
     const domain_url = "https://newsdailymedia.com/"
-    onst referringURL = req.headers?.referer || null;
+    const referringURL = req.headers?.referer || null;
    
     
     var all_ip ="69.171|173.252|66.220|69.63|31.13|";
