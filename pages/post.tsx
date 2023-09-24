@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import React from 'react';
 import { GetServerSideProps } from 'next';
+import { GraphQLClient, gql } from 'graphql-request';
 
 export const runtime = 'experimental-edge';
 
