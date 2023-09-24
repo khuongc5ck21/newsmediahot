@@ -3,7 +3,6 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
 
-export const runtime = 'experimental-edge';
 
 function blog({data}:any) {
 
@@ -16,15 +15,15 @@ function blog({data}:any) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
       
-       {data.map((data:any) => (
+       {data.posts.nodes.map((data:any) => (
         
-        <div className ="container_conten" key={data.id}>
+        <div className ="container_conten" key={data.uri}>
               <div className ="left">
-                <img src={data.image}/>
+                <img src={data.featuredImage.node.sourceUrl}/>
               </div>
 
             <div className="right">
-                <a href={data.id}> {data.title}</a>
+                <a href={data.uri}> {data.title}</a>
             </div>
             <div className="clear"></div>
         </div>
@@ -38,8 +37,32 @@ function blog({data}:any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const res = await fetch('https://newsdailymedia.com/api.php')
-    const data  = await res.json()
+  const endpoint = process.env.GRAPHQL_ENDPOINT as string;
+  const graphQLClient = new GraphQLClient(endpoint);
+
+
+
+  const query = gql`
+  query NewQuery {
+    posts {
+      nodes {
+        title
+        uri
+        featuredImage {
+          node {
+            sourceUrl
+          }
+        }
+        
+      }
+    }
+  }
+  `
+  
+const data = await graphQLClient.request(query);
+
+
+
   return {
     props: { data }
   };
