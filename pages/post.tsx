@@ -1,33 +1,25 @@
 import Head from 'next/head'
-import React from 'react';
-import { GetServerSideProps } from 'next';
-import { GraphQLClient, gql } from 'graphql-request';
+import { GetServerSideProps } from 'next'
+import { getAllPostsForHome } from '../lib/api'
 
-export const runtime = 'experimental-edge';
 
-function blog({data}:any) {
-  console.log(data)
-
+export default function Index({ allPosts, preview }) {
+ 
+  console.log(allPosts)
   return (
-    
-    <div className ="container">
-        {data}
+      <>
+        <div>
 
-    </div>
-
-    
+        </div>
+      </>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const endpoint = process.env.GRAPHQL_ENDPOINT as string;
-
-
-
+export const getServerSideProps: GetServerSideProps = async ({ preview = false }) => {
+  const allPosts = await getAllPostsForHome(preview)
 
   return {
-    props: { endpoint }
-  };
+    props: { allPosts, preview },
+    
+  }
 }
-
-export default blog
