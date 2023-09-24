@@ -3,7 +3,7 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
 
-//export const runtime = 'experimental-edge';
+export const runtime = 'experimental-edge';
 
 function blog({endpoint}:any) {
   console.log(endpoint);
