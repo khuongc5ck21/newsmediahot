@@ -1,13 +1,12 @@
-
 import Head from 'next/head'
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
-
 export const runtime = 'experimental-edge';
 
-function blog({data}:any) {
 
+function blog({data}:any) {
+  console.log(endpoint);
   return (
     
     <div className ="container">
@@ -39,8 +38,7 @@ function blog({data}:any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const domain = "https://newsdailymedia.com/graphql/";
-  const endpoint =  domain as string;
+  const endpoint = process.env.GRAPHQL_ENDPOINT as string;
   const graphQLClient = new GraphQLClient(endpoint);
 
 
@@ -67,7 +65,7 @@ const data = await graphQLClient.request(query);
 
 
   return {
-    props: { data }
+    props: { data,endpoint }
   };
 }
 
