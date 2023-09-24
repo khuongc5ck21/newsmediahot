@@ -2,11 +2,11 @@ import Head from 'next/head'
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
+
 export const runtime = 'experimental-edge';
 
-
 function blog({data}:any) {
-  console.log(endpoint);
+
   return (
     
     <div className ="container">
@@ -65,9 +65,8 @@ const data = await graphQLClient.request(query);
 
 
   return {
-    props: { data,endpoint }
+    props: { data }
   };
 }
 
 export default blog
-
