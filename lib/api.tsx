@@ -183,7 +183,7 @@ export async function getPostAndMorePosts({slug, preview, previewData}: any ) {
   }
 
   // Filter out the main post
-  data.posts.edges = data.posts.edges.filter(({ node }) => node.slug !== slug)
+  data.posts.edges = data.posts.edges.filter(({ node }: any) => node.slug !== slug)
   // If there are still 3 posts, remove the last one
   if (data.posts.edges.length > 2) data.posts.edges.pop()
 
