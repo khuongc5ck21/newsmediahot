@@ -80,7 +80,7 @@ export async function getAllPostsForHome({preview}: any ){
 
 
 
-export async function getPostAndMorePosts(slug, preview, previewData) {
+export async function getPostAndMorePosts({slug, preview, previewData}: any ) {
   const postPreview = preview && previewData?.post
   // The slug may be the id of an unpublished post
   const isId = Number.isInteger(Number(slug))
