@@ -24,7 +24,7 @@ console.log(data);
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const endpoint = "https://newsdailymedia.com/graphql";
+  const endpoint = "https://newsdailymedia.com/graphql/";
   const graphQLClient = new GraphQLClient(endpoint);
 
 
