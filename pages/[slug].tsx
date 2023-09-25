@@ -7,15 +7,8 @@ import {getPostAndMorePosts } from '../lib/api'
 
 
 
-export default function Post({slug, host } :any) {
-	const morePosts = posts?.edges
-	const removeTags = (str: string) => {
-		if (str === null || str === '') return '';
-		else str = str.toString();
-		return str.replace(/(<([^>]+)>)/gi, '').replace(/\[[^\]]*\]/, '');
-	};
-
-
+export default function Post({slug, host,data } :any) {
+console.log(data);
   return (
     
       <>
@@ -54,6 +47,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     props: {
       slug,
       host,
+      data,
     }
   }
 }
