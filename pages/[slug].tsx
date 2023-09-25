@@ -7,7 +7,7 @@ import {getPostAndMorePosts } from '../lib/api'
 
 
 
-export default function Post({slug, host, post, posts, preview,ip }) {
+export default function Post({slug, host }) {
 	const morePosts = posts?.edges
 	const removeTags = (str: string) => {
 		if (str === null || str === '') return '';
