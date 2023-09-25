@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { GetServerSideProps } from 'next';
-import { getAllPostsWithSlug, getPostAndMorePosts } from '../lib/api'
+import {getPostAndMorePosts } from '../lib/api'
 
 
 
@@ -49,13 +49,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   const referringURL = req.headers?.referer || null;
   const domain_url = process.env.WORDPRESS_API_URL as string;
   const data = await getPostAndMorePosts(slug)
-
-
-
-  
-
- 
-  
 
   return {
     props: {

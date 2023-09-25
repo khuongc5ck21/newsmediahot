@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import { getAllPostsForHome } from '../lib/api'
