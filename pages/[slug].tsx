@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { GetServerSideProps } from 'next';
 import {getPostAndMorePosts } from '../lib/api'
 
-
+export const runtime = 'experimental-edge';
 
 
 export default function Post({slug, host,data } :any) {
