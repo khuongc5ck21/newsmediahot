@@ -32,11 +32,10 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
 
 
 export async function getAllPostsForHome({preview}:any){
-  console.log(preview)
   const data = await fetchAPI(
     `
     query AllPosts {
-      posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+      posts(first: 2, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
             title
