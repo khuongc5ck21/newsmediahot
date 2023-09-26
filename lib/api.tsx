@@ -4,7 +4,7 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
   const headers = { 'Content-Type': 'application/json' }
 
 
-
+ // console.log(variables);
   // WPGraphQL Plugin must be enabled
   const res = await fetch(API_URL, {
     headers,
@@ -27,7 +27,12 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
 
 
 
-export async function getAllPostsForHome({preview}: any ){
+
+
+
+
+export async function getAllPostsForHome(preview : any ){
+  console.log(preview)
   const data = await fetchAPI(
     `
     query AllPosts {
@@ -70,15 +75,14 @@ export async function getAllPostsForHome({preview}: any ){
 }
 
 
-export async function getPostAndMorePosts({slug}: any) {
-  
+export async function getPostAndMorePosts(preview: any) {
+  const id = preview
+  console.log(id); 
   const data = await fetchAPI(
     `
     query NewQuery {
-      post(
-        id: "/${slug}/"
-        idType: URI
-      ) {
+     
+        post(id: "/${id}/", idType: URI) {
         id
         excerpt
         title
@@ -99,11 +103,13 @@ export async function getPostAndMorePosts({slug}: any) {
       }
     }
     
-  `
+  `,{
+    variables: {
+      id: id,
+      idType: 'URI',
+    },
+  }
     
   )
- 
-
-
   return data
 }

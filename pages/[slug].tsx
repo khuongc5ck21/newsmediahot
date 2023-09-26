@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { GetServerSideProps } from 'next';
 import {getPostAndMorePosts } from '../lib/api'
 
-export const runtime = 'experimental-edge';
+//export const runtime = 'experimental-edge';
 
 
 export default function Post({slug, host,data } :any) {
@@ -42,6 +42,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   const referringURL = req.headers?.referer || null;
   const domain_url = process.env.WORDPRESS_API_URL as string;
   const data = await getPostAndMorePosts(slug)
+
+
+
+  
 
   return {
     props: {

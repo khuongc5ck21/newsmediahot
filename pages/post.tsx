@@ -3,11 +3,11 @@ import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import { getAllPostsForHome } from '../lib/api'
 
-export const runtime = 'experimental-edge';
+//export const runtime = 'experimental-edge';
 
 export default function Index({ allPosts}: any ) {
  
-  console.log(allPosts)
+  
   return (
     <div className ="container">
     <Head>
