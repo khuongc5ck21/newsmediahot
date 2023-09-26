@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next';
 import { getAllPostsForHome } from '../lib/api'
 
 
-export default function Index({ allPosts, preview }) {
+export default function Index({ allPosts, preview }:any) {
  
 console.log(allPosts)
   return (
