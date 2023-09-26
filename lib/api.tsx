@@ -31,7 +31,7 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
 
 
 
-export async function getAllPostsForHome(preview : any ){
+export async function getAllPostsForHome({preview}:any){
   console.log(preview)
   const data = await fetchAPI(
     `
