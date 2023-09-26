@@ -1,10 +1,8 @@
-import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { GetStaticPaths, GetStaticProps } from 'next'
 import { GetServerSideProps } from 'next';
 import {getPostAndMorePosts } from '../lib/api'
 
-//export const runtime = 'experimental-edge';
+export const runtime = 'experimental-edge';
 
 
 export default function Post({slug, host,data } :any) {
