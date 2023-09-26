@@ -16,7 +16,7 @@ export default function Index({ allPosts}: any ) {
       <link rel="icon" href="/favicon.ico" />
     </Head>
   
-   {allPosts.edges.map((allPosts:any) => (
+   {allPosts.edges.map(({allPosts}:any) => (
     
     <div className ="container_conten" key={allPosts.node.slug} >
           <div className ="left">
