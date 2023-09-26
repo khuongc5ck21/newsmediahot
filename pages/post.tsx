@@ -5,7 +5,7 @@ import { getAllPostsForHome } from '../lib/api'
 
 export const runtime = 'experimental-edge';
 
-export default function Index({ allPosts}: any ) {
+export default function Index(allPosts: any ) {
     console.log(allPosts)
  
   
