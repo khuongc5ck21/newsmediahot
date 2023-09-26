@@ -26,23 +26,17 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
 
 
 
-
-
-
-
-
-export async function getAllPostsForHome({preview}:any){
+export async function getAllPostsForHome(preview) {
   const data = await fetchAPI(
     `
     query AllPosts {
-      posts(first: 2, where: { orderby: { field: DATE, order: DESC } }) {
+      posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
             title
             excerpt
             slug
             date
-            name
             featuredImage {
               node {
                 sourceUrl
@@ -73,6 +67,8 @@ export async function getAllPostsForHome({preview}:any){
 
   return data?.posts
 }
+
+
 
 
 export async function getPostAndMorePosts(slug: any) {
