@@ -43,6 +43,7 @@ export async function getAllPostsForHome(preview : any ){
             excerpt
             slug
             date
+            name
             featuredImage {
               node {
                 sourceUrl
@@ -75,14 +76,12 @@ export async function getAllPostsForHome(preview : any ){
 }
 
 
-export async function getPostAndMorePosts(preview: any) {
-  const id = preview
-  console.log(id); 
+export async function getPostAndMorePosts(slug: any) {
   const data = await fetchAPI(
     `
     query NewQuery {
      
-        post(id: "/${id}/", idType: URI) {
+        post(id: "/${slug}/", idType: URI) {
         id
         excerpt
         title
@@ -105,7 +104,7 @@ export async function getPostAndMorePosts(preview: any) {
     
   `,{
     variables: {
-      id: id,
+      id: slug,
       idType: 'URI',
     },
   }
