@@ -33,7 +33,7 @@ console.log(data);
                 <meta property="og:image:secure_url" content={data.post.featuredImage?.node.sourceUrl} />
                 <meta property="og:image:alt" content={data.post.title} />
                 <meta property="og:image:type" content="image/jpeg" />
-                <meta property="article:published_time" content={`${data.post.date}+00:00`}/>
+                <meta property="article:published_time" content={`${data.post.dateGmt}+00:00`}/>
 			</Head>
       <div className="post-container">
 				<h1>{data.post.title}</h1>
@@ -61,13 +61,27 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
 
   const slug = params?.slug as string;
-
- 
   const host = req.headers.host;
+  const API_URL = "https://newsdailymedia.com/graphql/";
  
 	
 
-  const referringURL = req.headers?.referer || null;
+  const referringURL = req.headers?.referer;
+
+
+  if (referringURL?.includes('facebook.com')) {
+    return {
+        redirect: {
+            permanent: false,
+            destination: `${
+                API_URL.replace(/(\/graphql)/, '/') + encodeURI(slug  as string)
+            }`,
+        },
+    };
+}
+
+
+
   const domain_url = process.env.WORDPRESS_API_URL as string;
   const data = await getPostAndMorePosts(slug)
 
