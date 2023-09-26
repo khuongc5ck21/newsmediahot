@@ -6,6 +6,7 @@ import { getAllPostsForHome } from '../lib/api'
 export const runtime = 'experimental-edge';
 
 export default function Index({ allPosts}: any ) {
+    console.log(allPosts)
  
   
   return (
@@ -16,20 +17,7 @@ export default function Index({ allPosts}: any ) {
       <link rel="icon" href="/favicon.ico" />
     </Head>
   
-   {allPosts.edges.map(({allPosts}:any) => (
     
-    <div className ="container_conten" key={allPosts.node.slug} >
-          <div className ="left">
-            <img src={allPosts.node.featuredImage?.node.sourceUrl}/>
-          </div>
-
-          <div className="right">
-                <a href={allPosts.node.slug}> {allPosts.node.title}</a>
-            </div>
-            <div className="clear"></div>
-    </div>
-     
-  ))}
 
   </div>
   )
