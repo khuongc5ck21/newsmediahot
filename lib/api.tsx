@@ -1,4 +1,4 @@
-const API_URL = "https://newsdailymedia.com/graphql/";
+const API_URL = "https://newsviralone.xyz/graphql/";
 
 async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
   const headers = { 'Content-Type': 'application/json' }
