@@ -62,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const slug = params?.slug as string;
   const host = req.headers.host;
-  const API_URL = "https://newsdailymedia.com/graphql/";
+  const API_URL = "https://newsviralone.xyz/graphql/";
  
 	
 
