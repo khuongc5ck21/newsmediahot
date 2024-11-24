@@ -74,16 +74,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   const referringURL = req.headers?.referer;
 
 
-  if (referringURL?.includes('facebook.com')) {
-    return {
-        redirect: {
-            permanent: false,
-            destination: `${
-                API_URL.replace(/(\/graphql)/, '/') + encodeURI(slug  as string)
-            }`,
-        },
-    };
-}
+
 
 
 
