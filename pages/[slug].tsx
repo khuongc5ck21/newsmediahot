@@ -30,7 +30,7 @@ console.log(data);
                 <meta property="og:url" content={`https://${host}/${slug}`}/>
                 <meta property="og:site_name" content={host}/>
                 <meta property="og:image"content={data.post.featuredImage?.node.sourceUrl}/>
-                <meta property="og:image:secure_url" content={data.post.featuredImage?.node.sourceUrl} />
+               
                 <meta property="og:image:alt" content={data.post.title} />
                 <meta property="og:image:type" content="image/jpeg" />
                 <meta property="article:published_time" content={`${data.post.dateGmt}+00:00`}/>
