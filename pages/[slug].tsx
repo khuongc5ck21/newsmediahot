@@ -35,13 +35,18 @@ console.log(data);
                 <meta property="og:image:type" content="image/jpeg" />
                 <meta property="article:published_time" content={`${data.post.dateGmt}+00:00`}/>
 			</Head>
-      <div className="post-container">
+                         <div className="post-container">
 				<h1>{data.post.title}</h1>
 				<img
 					src={data.post.featuredImage.node.sourceUrl}
 					alt={data.post.featuredImage.node.altText || data.post.title}
 				/>
 				<article dangerouslySetInnerHTML={{ __html: data.post.content }} />
+                                  <footer>
+  <p>Author: Hege Refsnes</p>
+  <p><a href="mailto:hege@example.com">hege@example.com</a></p>
+</footer>
+
 			</div>
       </>
     
